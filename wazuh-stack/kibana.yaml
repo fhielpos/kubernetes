@@ -8,7 +8,6 @@ spec:
   selector:
     matchLabels:
       app: wazuh-kibana
-  serviceName: wazuh-kibana
   template:
     metadata:
       labels:
