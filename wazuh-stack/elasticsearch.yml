@@ -77,7 +77,7 @@ spec:
             - name: cluster.initial_master_nodes
               value: "wazuh-elasticsearch-0,wazuh-elasticsearch-1,wazuh-elasticsearch-2"
             - name: discovery.seed_hosts
-              value: "wazuh-elasticsearch-0"
+              value: "wazuh-elasticsearch"
           volumeMounts:
             - name: wazuh-elasticsearch
               mountPath: /usr/share/elasticsearch/data
