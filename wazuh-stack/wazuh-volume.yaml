@@ -8,5 +8,8 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
+  claimRef:
+    name: wazuh-manager-master
+    namespace: wazuh
   hostPath:
     path: "/data"
