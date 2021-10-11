@@ -15,7 +15,6 @@ spec:
         app: wazuh-kibana
       name: wazuh-kibana
     spec:
-      # Set the wazuh-kibana volume permissions so the elasticsearch user can use it!
       containers:
         - name: wazuh-kibana
           image: wazuh/wazuh-kibana:3.12.3_7.6.2
