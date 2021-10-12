@@ -19,7 +19,7 @@ spec:
           image: wazuh/wazuh-kibana:3.12.3_7.6.2
           env:
             - name: ELASTICSEARCH_HOSTS
-              value: https://elasticsearch:9200
+              value: http://elasticsearch:9200
           ports:
             - containerPort: 5601
               name: kibana
