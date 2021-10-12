@@ -49,13 +49,13 @@ spec:
           resources:
             requests:
               cpu: 500m
-              memory: 2Gi
+              memory: 1Gi
             limits:
               cpu: 1
-              memory: 2Gi
+              memory: 1Gi
           env:
             - name: ES_JAVA_OPTS
-              value: '-Xms1024m -Xmx1024m'
+              value: '-Xms500m -Xmx500m'
             - name: search.max_buckets
               value: "30000"
             - name: node.master
