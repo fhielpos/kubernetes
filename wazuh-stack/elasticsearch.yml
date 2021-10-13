@@ -4,7 +4,7 @@ metadata:
   name: wazuh-elasticsearch
   namespace: wazuh
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: wazuh-elasticsearch
@@ -75,7 +75,7 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: cluster.initial_master_nodes
-              value: "wazuh-elasticsearch-0,wazuh-elasticsearch-1"
+              value: "wazuh-elasticsearch-0"
             - name: discovery.seed_hosts
               value: "wazuh-elasticsearch"
           volumeMounts:
