@@ -93,7 +93,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: local-storage
+        storageClassName: gp2-retain
         resources:
           requests:
-            storage: 3Gi
+            storage: 5Gi
