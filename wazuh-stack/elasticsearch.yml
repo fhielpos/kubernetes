@@ -61,9 +61,9 @@ spec:
             - name: node.master
               value: 'true'
             - name: node.data
-              value: 'false'
+              value: 'true'
             - name: node.ingest
-              value: 'false'
+              value: 'true'
             - name: bootstrap.memory_lock
               value: 'false'
             - name: cluster.name
