@@ -11,5 +11,5 @@ spec:
     app: wazuh-kibana
   ports:
     - name: kibana
-      port: 443 
+      port: 5601 
       targetPort: 5601
