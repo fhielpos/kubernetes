@@ -43,6 +43,8 @@ spec:
           ports:
             - containerPort: 1515
               name: registration
+            - containerPort: 1514
+              name: remoted
             - containerPort: 1516
               name: cluster
             - containerPort: 55000
