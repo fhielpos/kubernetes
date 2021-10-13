@@ -8,7 +8,7 @@ metadata:
   namespace: wazuh
 spec:
   containers:
-  - image: centos:7
+  - image: fhielpos/wazuh-agent:latest 
     name: dummy-agent
     resources: {}
   dnsPolicy: ClusterFirst
