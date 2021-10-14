@@ -22,7 +22,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: wazuh-manager-master-conf   
+            name: wazuh-manager-master-conf  
       containers:
         - name: wazuh-manager
           image: 'wazuh/wazuh:4.2.3'
@@ -36,7 +36,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /wazuh-config-mount/etc/ossec.conf
-              subPath: ossec.conf
               readOnly: true
             - name: wazuh-manager-master
               mountPath: /migration/data              
