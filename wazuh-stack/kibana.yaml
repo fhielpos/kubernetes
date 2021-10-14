@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: wazuh-kibana
-          image: wazuh/wazuh-kibana:4.2.3
+          image: wazuh/wazuh-kibana:3.12.3_7.6.2
           env:
             - name: ELASTICSEARCH_HOSTS
               value: http://elasticsearch:9200
