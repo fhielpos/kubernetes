@@ -38,7 +38,7 @@ spec:
               mountPath: /wazuh-config-mount/etc/ossec.conf
               readOnly: true
             - name: wazuh-manager-master
-              mountPath: /wazuh-migration/data              
+              mountPath: /wazuh-migration              
           ports:
             - containerPort: 1515
               name: registration
