@@ -40,7 +40,7 @@ spec:
               readOnly: true
             - name: wazuh-manager-master
               subPath: data
-              mountPath: /wazuh-config-mount              
+              mountPath: /wazuh-config-mount/              
           ports:
             - containerPort: 1515
               name: registration
