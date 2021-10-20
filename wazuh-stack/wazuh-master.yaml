@@ -25,7 +25,7 @@ spec:
             name: wazuh-manager-master-conf  
       containers:
         - name: wazuh-manager
-          image: 'wazuh/wazuh:3.13.3_7.9.2'
+          image: 'wazuh/wazuh:4.2.4'
           resources:
             requests:
               cpu: 500m
@@ -39,7 +39,7 @@ spec:
               subPath: ossec.conf
               readOnly: true
             - name: wazuh-manager-master
-              mountPath: /var/ossec/data              
+              mountPath: /wazuh-migration            
           ports:
             - containerPort: 1515
               name: registration
