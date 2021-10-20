@@ -39,8 +39,7 @@ spec:
               subPath: ossec.conf
               readOnly: true
             - name: wazuh-manager-master
-              subPath: data
-              mountPath: /wazuh-config-mount/              
+              mountPath: /var/ossec/data              
           ports:
             - containerPort: 1515
               name: registration
