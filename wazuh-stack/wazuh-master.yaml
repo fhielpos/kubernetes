@@ -25,7 +25,7 @@ spec:
             name: wazuh-manager-master-conf  
       containers:
         - name: wazuh-manager
-          image: 'wazuh/wazuh:4.2.4'
+          image: 'wazuh/wazuh:3.13.3_7.9.1'
           resources:
             requests:
               cpu: 500m
