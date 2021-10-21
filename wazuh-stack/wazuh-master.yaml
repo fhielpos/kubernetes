@@ -40,8 +40,12 @@ spec:
               readOnly: true
             - name: wazuh-manager-master
               mountPath: /wazuh-migration            
-            - name: wazuh-manager-master-4x
+            - name: wazuh-manager-master
               mountPath: /var/ossec/etc
+            - name: wazuh-manager-master
+              mountPath: /var/ossec/api
+            - name: wazuh-manager-master
+              mountPath: /var/ossec/queue
           ports:
             - containerPort: 1515
               name: registration
@@ -54,16 +58,6 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: wazuh-manager-master
-        namespace: wazuh
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        storageClassName: gp2-retain
-        resources:
-          requests:
-            storage: 2Gi
-    - metadata:
-        name: wazuh-manager-master-4x
         namespace: wazuh
       spec:
         accessModes:
