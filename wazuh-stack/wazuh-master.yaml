@@ -41,14 +41,32 @@ spec:
             - name: wazuh-manager-master
               mountPath: /wazuh-migration            
             - name: wazuh-manager-master
-              subPath: etc
+              mountPath: /var/ossec/api/configuration
+              subPath: wazuh/var/ossec/api/configuration
+            - name: wazuh-manager-master
               mountPath: /var/ossec/etc
+              subPath: wazuh/var/ossec/etc
             - name: wazuh-manager-master
-              subPath: api
-              mountPath: /var/ossec/api
+              mountPath: /var/ossec/logs
+              subPath: wazuh/var/ossec/logs
             - name: wazuh-manager-master
-              subPath: queue
               mountPath: /var/ossec/queue
+              subPath: wazuh/var/ossec/queue
+            - name: wazuh-manager-master
+              mountPath: /var/ossec/var/multigroups
+              subPath: wazuh/var/ossec/var/multigroups
+            - name: wazuh-manager-master
+              mountPath: /var/ossec/integrations
+              subPath: wazuh/var/ossec/integrations
+            - name: wazuh-manager-master
+              mountPath: /var/ossec/active-response/bin
+              subPath: wazuh/var/ossec/active-response/bin
+            - name: wazuh-manager-master
+              mountPath: /var/ossec/agentless
+              subPath: wazuh/var/ossec/agentless
+            - name: wazuh-manager-master
+              mountPath: /var/ossec/wodles
+              subPath: wazuh/var/ossec/wodles
           ports:
             - containerPort: 1515
               name: registration
