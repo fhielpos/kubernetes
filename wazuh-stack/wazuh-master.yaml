@@ -41,10 +41,13 @@ spec:
             - name: wazuh-manager-master
               mountPath: /wazuh-migration            
             - name: wazuh-manager-master
+              subPath: etc
               mountPath: /var/ossec/etc
             - name: wazuh-manager-master
+              subPath: api
               mountPath: /var/ossec/api
             - name: wazuh-manager-master
+              subPath: queue
               mountPath: /var/ossec/queue
           ports:
             - containerPort: 1515
