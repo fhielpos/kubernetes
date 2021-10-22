@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: wazuh-agent
+  name: wazuh-agent
+  namespace: wazuh
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wazuh-agent
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: wazuh-agent
+    spec:
+      containers:
+      - image: fhielpos/wazuh-agent:latest
+        name: wazuh-agent
+        resources: {}
+        env:
+          - name: WAZUH_MANAGER_IP
+            value: "a6acfce6917d443ccb8fbe2a1d94e880-160196445.us-east-2.elb.amazonaws.com"
+status: {}
