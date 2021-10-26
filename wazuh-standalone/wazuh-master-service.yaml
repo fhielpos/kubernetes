@@ -5,12 +5,8 @@ metadata:
   namespace: wazuh
   labels:
     app: wazuh-manager
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: external
-    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
-    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: wazuh-manager
     node-type: master
@@ -21,6 +17,3 @@ spec:
     - name: api
       port: 55000
       targetPort: 55000
-    - name: remoted
-      port: 1514
-      targetPort: 1514
