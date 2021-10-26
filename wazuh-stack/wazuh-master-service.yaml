@@ -17,6 +17,3 @@ spec:
     - name: api
       port: 55000
       targetPort: 55000
-    - name: remoted
-      port: 1514
-      targetPort: 1514
