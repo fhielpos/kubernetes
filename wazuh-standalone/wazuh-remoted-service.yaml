@@ -16,6 +16,6 @@ spec:
     node-type: worker
   ports:
     - name: remoted
-      protocol: UDP
+      protocol: TCP
       port: 1514
       targetPort: 1514

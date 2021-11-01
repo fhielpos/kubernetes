@@ -24,5 +24,5 @@ spec:
         resources: {}
         env:
           - name: WAZUH_MANAGER_IP
-            value: "a6acfce6917d443ccb8fbe2a1d94e880-160196445.us-east-2.elb.amazonaws.com"
+            value: "wazuh-remoted"
 status: {}
