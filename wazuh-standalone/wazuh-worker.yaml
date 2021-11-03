@@ -71,6 +71,8 @@ spec:
             - containerPort: 1514
               protocol: UDP
               name: remoted
+            - containerPort: 1516
+              name: cluster 
           env:
             - name: WAZUH_CLUSTER_KEY
               value: add57745685f01af77244ea8e08c09db
