@@ -36,7 +36,7 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /wazuh-config-mount/etc/ossec.conf
-              subPath: ossec.conf
+              subPath: worker.conf
               readOnly: true
             - name: wazuh-manager-worker
               mountPath: /wazuh-migration            
@@ -71,6 +71,9 @@ spec:
             - containerPort: 1514
               protocol: UDP
               name: remoted
+          env:
+            - name: WAZUH_CLUSTER_KEY
+              value: add57745685f01af77244ea8e08c09db
   volumeClaimTemplates:
     - metadata:
         name: wazuh-manager-worker
