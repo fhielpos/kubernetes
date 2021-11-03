@@ -132,13 +132,13 @@ data:
                 echo "Checking node sync status."
                 node_status=$(/var/ossec/bin/cluster_control -i | grep $node_name)
                 if [ ! -z "$node_status" ]; then
-                    sync_date=$(echo $node_status | cut -d" " -f4-5 | cut -d"." -f1 | sed 's;-;/;g')
+                    sync_date=$(echo $node_status | cut -d" " -f5-6 | cut -d"." -f1 | sed 's;-;/;g')
                     echo $sync_date | grep -P "\d\d\d\d/\d\d/\d\d \d\d:\d\d:\d\d"
                     if [ $? == 0 ]; then
                         sync_date_seconds=$(date -d "$sync_date" +%s)
-                        sync_timediff=$(($(date +%s)-$(date -d "$sync_date" +%s)))
+                        sync_timediff=$(($(date +%s)-$sync_date_seconds))
                         if (( $sync_timediff < 600)); then
-                            /var/ossec/bin/ossec-logtest -t &> /dev/null
+                            /var/ossec/bin/wazuh-logtest-legacy -t &> /dev/null
                             if [ $? == 0 ]; then
                                 service wazuh-manager restart
                                 echo "True" > /tmp/cluster_first_sync
