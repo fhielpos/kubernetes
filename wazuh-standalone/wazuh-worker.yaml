@@ -23,6 +23,10 @@ spec:
         - name: config
           configMap:
             name: wazuh-manager-worker-conf  
+        - name: config-scripts
+          configMap:
+            name: wazuh-manager-worker-scripts
+            defaultMode: 0755
       containers:
         - name: wazuh-manager
           image: 'wazuh/wazuh:4.2.4'
@@ -39,11 +43,7 @@ spec:
               subPath: worker.conf
               readOnly: true
             - name: config
-              mountPath: /entrypoint-scripts/runsync.sh
-              subPath: run_sync.sh
-              readOnly: true
-            - name: config
-              mountPath: /tmp/auto_restart.sh
+              mountPath: /etc/cont-init.d/3-cluster-sync.sh
               readOnly: false
               subPath: auto_restart-2.sh              
             - name: wazuh-manager-worker

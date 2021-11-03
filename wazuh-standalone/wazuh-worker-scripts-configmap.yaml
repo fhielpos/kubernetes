@@ -1,0 +1,56 @@
+apiVersion: v1
+data:
+  auto_restart-2.sh: |
+    #!/usr/bin/with-contenv bash
+
+    while true
+    do
+        node_name=$(sed 's/<!--.*-->//' /var/ossec/etc/ossec.conf | sed '/<!--/,/-->/d' | tac | sed -n 's;<node_name>\([^/]*\)</node_name>;\1;p' | head -n1 | sed 's/^ *//g')
+        /var/ossec/bin/cluster_control -i | grep 'Cluster name' &> /dev/null
+        if [ $? == 0 ]; then
+            echo "Cluster connected..."
+            if [ ! -f /tmp/cluster_first_sync ]; then
+                echo "Checking node sync status."
+                node_status=$(/var/ossec/bin/cluster_control -i | grep $node_name)
+                if [ ! -z "$node_status" ]; then
+                    sync_date=$(echo $node_status | cut -d" " -f5-6 | cut -d"." -f1 | sed 's;-;/;g')
+                    echo $sync_date | grep -P "\d\d\d\d/\d\d/\d\d \d\d:\d\d:\d\d"
+                    if [ $? == 0 ]; then
+                        sync_date_seconds=$(date -d "$sync_date" +%s)
+                        sync_timediff=$(($(date +%s)-$sync_date_seconds))
+                        if (( $sync_timediff < 600)); then
+                            /var/ossec/bin/wazuh-logtest-legacy -t &> /dev/null
+                            if [ $? == 0 ]; then
+                                service wazuh-manager restart
+                                echo "True" > /tmp/cluster_first_sync
+                                echo "Wazuh manager restarted. Finishing."
+                                break
+                            else
+                                echo "Error with the Wazuh configuration, skipping restart."
+                            fi
+                        else
+                            echo "Last syncronization executed more than 10 minutes ago."
+                        fi
+                    else
+                        echo "Invalid date format $sync_date"
+                    fi
+                else
+                    echo "Node $node_name not found in the cluster."
+                fi
+            else
+                echo "First cluster sync already performed. Finishing"
+                break
+            fi
+        else
+            echo "Cluster not connected"
+            sleep 15
+        fi
+    done
+  run_sync.sh: |
+    chmod u+x /tmp/auto_restart.sh
+    /tmp/auto_restart.sh &    
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: wazuh-manager-worker-scripts
+  namespace: wazuh
