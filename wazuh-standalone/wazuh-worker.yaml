@@ -38,6 +38,14 @@ spec:
               mountPath: /wazuh-config-mount/etc/ossec.conf
               subPath: worker.conf
               readOnly: true
+            - name: config
+              mountPath: /entrypoint-scripts/runsync.sh
+              subPath: runsync.sh
+              readOnly: true
+            - name: config
+              mountPath: /tmp/autorestart.sh
+              readOnly: false
+              subPath: autorestart.sh              
             - name: wazuh-manager-worker
               mountPath: /wazuh-migration            
             - name: wazuh-manager-worker
