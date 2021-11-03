@@ -36,7 +36,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /wazuh-config-mount/etc/ossec.conf
-              subPath: ossec.conf
               readOnly: true
             - name: wazuh-manager-master
               mountPath: /wazuh-migration            
