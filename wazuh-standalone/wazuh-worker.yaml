@@ -42,7 +42,7 @@ spec:
               mountPath: /wazuh-config-mount/etc/ossec.conf
               subPath: worker.conf
               readOnly: true
-            - name: config
+            - name: config-scripts
               mountPath: /etc/cont-init.d/3-cluster-sync.sh
               readOnly: false
               subPath: auto_restart-2.sh              
