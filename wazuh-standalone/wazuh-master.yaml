@@ -70,6 +70,7 @@ spec:
             - containerPort: 1515
               name: registration
             - containerPort: 1514
+              protocol: UDP
               name: remoted
             - containerPort: 1516
               name: cluster
